@@ -164,7 +164,9 @@ worksheet names.}
 \item \href{#method-wbWorkbook-add_data_table}{\code{wbWorkbook$add_data_table()}}
 \item \href{#method-wbWorkbook-add_pivot_table}{\code{wbWorkbook$add_pivot_table()}}
 \item \href{#method-wbWorkbook-add_slicer}{\code{wbWorkbook$add_slicer()}}
+\item \href{#method-wbWorkbook-remove_slicer}{\code{wbWorkbook$remove_slicer()}}
 \item \href{#method-wbWorkbook-add_timeline}{\code{wbWorkbook$add_timeline()}}
+\item \href{#method-wbWorkbook-remove_timeline}{\code{wbWorkbook$remove_timeline()}}
 \item \href{#method-wbWorkbook-add_formula}{\code{wbWorkbook$add_formula()}}
 \item \href{#method-wbWorkbook-add_style}{\code{wbWorkbook$add_style()}}
 \item \href{#method-wbWorkbook-to_df}{\code{wbWorkbook$to_df()}}
@@ -748,6 +750,26 @@ The \code{wbWorkbook} object
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-wbWorkbook-remove_slicer"></a>}}
+\if{latex}{\out{\hypertarget{method-wbWorkbook-remove_slicer}{}}}
+\subsection{Method \code{remove_slicer()}}{
+add pivot table
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{wbWorkbook$remove_slicer(sheet = current_sheet())}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{sheet}}{The name of the sheet}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The \code{wbWorkbook} object
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-wbWorkbook-add_timeline"></a>}}
 \if{latex}{\out{\hypertarget{method-wbWorkbook-add_timeline}{}}}
 \subsection{Method \code{add_timeline()}}{
@@ -777,6 +799,26 @@ add pivot table
 \item{\code{timeline}}{a variable used as timeline for the pivot table}
 
 \item{\code{params}}{a list of parameters to modify pivot table creation}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The \code{wbWorkbook} object
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-wbWorkbook-remove_timeline"></a>}}
+\if{latex}{\out{\hypertarget{method-wbWorkbook-remove_timeline}{}}}
+\subsection{Method \code{remove_timeline()}}{
+add pivot table
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{wbWorkbook$remove_timeline(sheet = current_sheet())}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{sheet}}{The name of the sheet}
 }
 \if{html}{\out{</div>}}
 }

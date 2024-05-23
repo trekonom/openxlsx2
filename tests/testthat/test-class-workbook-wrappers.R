@@ -403,6 +403,11 @@ test_that("wb_add_slicer() is a wrapper", {
   expect_wrapper("add_slicer", wb = wb, params = list(x = df, slicer = "vs", pivot_table = "pivot1"))
 })
 
+test_that("wb_remove_slicer() is a wrapper", {
+  wb <- wb_workbook()$add_worksheet()
+  expect_wrapper("remove_slicer", wb = wb)
+})
+
 test_that("wb_add_timeline() is a wrapper", {
   df <- data.frame(
     date = seq(from = as.Date("2024-01-01"), length.out = 26, by = "month"),
@@ -413,6 +418,11 @@ test_that("wb_add_timeline() is a wrapper", {
   df <- wb_data(wb)
   wb$add_pivot_table(x = df, data = "amnt", timeline = "date", pivot_table = "pivot1")
   expect_wrapper("add_timeline", wb = wb, params = list(x = df, timeline = "date", pivot_table = "pivot1"))
+})
+
+test_that("wb_remove_timeline() is a wrapper", {
+  wb <- wb_workbook()$add_worksheet()
+  expect_wrapper("remove_timeline", wb = wb)
 })
 
 test_that("wb_add_formula() is a wrapper", {

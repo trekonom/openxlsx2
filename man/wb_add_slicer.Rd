@@ -2,7 +2,9 @@
 % Please edit documentation in R/class-workbook-wrappers.R
 \name{wb_add_slicer}
 \alias{wb_add_slicer}
+\alias{wb_remove_slicer}
 \alias{wb_add_timeline}
+\alias{wb_remove_timeline}
 \title{Add a slicer/timeline to a pivot table}
 \usage{
 wb_add_slicer(
@@ -15,6 +17,8 @@ wb_add_slicer(
   params
 )
 
+wb_remove_slicer(wb, sheet = current_sheet())
+
 wb_add_timeline(
   wb,
   x,
@@ -24,6 +28,8 @@ wb_add_timeline(
   timeline,
   params
 )
+
+wb_remove_timeline(wb, sheet = current_sheet())
 }
 \arguments{
 \item{wb}{A Workbook object containing a worksheet.}
@@ -75,6 +81,8 @@ Possible common \code{params}:
 \item level: the granularity of the slicer (for timeline 0 = year, 1 = quarter, 2 = month)
 \item show_caption: logical if caption should be shown or not
 }
+
+Removing works on the spreadsheet level. Therefore all slicers/timelines are removed from a worksheet. At the moment the drawing reference remains on the spreadsheet. Therefore spreadsheet software that does not handle slicers/timelines will still show the drawing.
 }
 \examples{
 # prepare data
