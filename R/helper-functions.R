@@ -457,6 +457,35 @@ create_sparklines <- function(
   if (!is.null(markers) && as_xml_attr(markers) == "" && !is.null(type) && type %in% c("stacked", "column"))
     stop("markers only affect lines `type = NULL`, not stacked or column")
 
+  dims_helper <- function(x) {
+    rc <- dims_to_rowcol(x, as_integer = TRUE)
+
+    vapply(rc[[2]], function(row) {
+      rowcol_to_dims(
+        row = row,
+        col = seq.int(min(rc[[1]]), max(rc[[1]])))
+    }, FUN.VALUE = character(1))
+  }
+
+  dims <- dims_helper(dims)
+  sqref <- dims_helper(sqref)
+
+  sparkline <- Map(
+    function(dims, sqref) {
+      xml_node_create(
+        "x14:sparkline", xml_children = c(
+          xml_node_create(
+            "xm:f", xml_children = c(
+              paste0(shQuote(sheet, type = "sh"), "!", dims)
+            )),
+          xml_node_create(
+            "xm:sqref", xml_children = c(
+              sqref
+            ))
+        ))
+    }, dims, sqref)
+  sparklines <- paste(unlist(sparkline), collapse = "")
+
   sparklineGroup <- xml_node_create(
     "x14:sparklineGroup",
     xml_attributes = c(
@@ -489,19 +518,7 @@ create_sparklines <- function(
       xml_node_create("x14:colorHigh",     xml_attributes = color_high),
       xml_node_create("x14:colorLow",      xml_attributes = color_low),
       xml_node_create(
-        "x14:sparklines", xml_children = c(
-          xml_node_create(
-            "x14:sparkline", xml_children = c(
-              xml_node_create(
-                "xm:f", xml_children = c(
-                  paste0(shQuote(sheet, type = "sh"), "!", dims)
-                )),
-              xml_node_create(
-                "xm:sqref", xml_children = c(
-                  sqref
-                ))
-            ))
-        )
+        "x14:sparklines", xml_children = sparklines
       )
     )
   )
